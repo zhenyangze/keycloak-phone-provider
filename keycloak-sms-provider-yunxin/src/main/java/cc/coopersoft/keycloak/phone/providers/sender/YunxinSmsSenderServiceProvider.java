@@ -21,6 +21,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Arrays;
 
 public class YunxinSmsSenderServiceProvider implements MessageSenderService {
 
@@ -70,7 +71,7 @@ public class YunxinSmsSenderServiceProvider implements MessageSenderService {
        * 2.具体的code有问题的可以参考官网的Code状态表
        */
       httpPost.setEntity(new UrlEncodedFormEntity(nvps, "utf-8"));
-      HttpResponse response = HttpClientBuilder.create().setDefaultHeaders(List.of(
+      HttpResponse response = HttpClientBuilder.create().setDefaultHeaders(Arrays.asList(
               new BasicHeader(HttpHeaders.CONTENT_TYPE, "application/x-www-form-urlencoded;charset=utf-8"),
               new BasicHeader("AppKey",config.get(realm.getName().toUpperCase() + "_APP_ID") ),
               new BasicHeader("Nonce",code),
